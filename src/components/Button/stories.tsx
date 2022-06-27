@@ -7,11 +7,17 @@ export default {
 } as Meta
 
 export const Default: Story<ButtonProps> = (args) => (
-  <Button {...args}>Label</Button>
+  <Button {...args}>Default</Button>
 )
 
 export const Disabled: Story<ButtonProps> = (args) => (
   <Button {...args} disabled>
-    Label
+    Disabled
+  </Button>
+)
+
+export const Loading: Story<ButtonProps> = (args) => (
+  <Button {...args} loading>
+    Loading
   </Button>
 )

@@ -1,5 +1,5 @@
-import Main from 'components/Main'
+import Button from 'components/Button'
 
-export default function Home() {
-  return <Main />
+export default function Index() {
+  return <Button>Label</Button>
 }

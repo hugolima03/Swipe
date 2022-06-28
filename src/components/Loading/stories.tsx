@@ -6,8 +6,7 @@ export default {
   component: Loading,
   parameters: {
     backgrounds: {
-      default: 'swipe-dark',
-      values: [{ name: 'swipe-dark', value: '#00aced' }]
+      default: 'dark'
     }
   }
 } as Meta

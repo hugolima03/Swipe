@@ -71,6 +71,7 @@ export const Button = styled.button<ButtonProps>`
 
     &:hover {
       background-color: ${lighten(0.1, theme.colors.primary)};
+      border: 1px solid ${lighten(0.1, theme.colors.primary)};
     }
 
     &:disabled {

@@ -9,22 +9,26 @@ export const parameters = {
     Provider: RouterContext.Provider
   },
   backgrounds: {
-    default: 'swipe-white',
     values: [
-      {
-        name: 'swipe-white',
-        value: theme.colors.white
-      },
-      {
-        name: 'swipe-pink',
-        value: theme.colors.primary
-      },
-      {
-        name: 'swipe-dark',
-        value: theme.colors.black
-      }
+      { name: 'white', value: theme.colors.white },
+      { name: 'pink', value: theme.colors.primary },
+      { name: 'dark', value: theme.colors.black }
     ]
   }
+  // values: [
+  //   {
+  //     name: 'swipe-white',
+  //     value: theme.colors.white
+  //   },
+  //   {
+  //     name: 'swipe-pink',
+  //     value: theme.colors.primary
+  //   },
+  //   {
+  //     name: 'dark',
+  //     value: '#f00'
+  //   }
+  // ]
 }
 
 export const decorators = [

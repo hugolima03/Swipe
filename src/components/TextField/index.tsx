@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react'
+import { ChangeEvent, InputHTMLAttributes } from 'react'
 import * as S from './styles'
 
 export type TextFieldProps = {
@@ -9,16 +9,36 @@ export type TextFieldProps = {
   initialValue?: string
   icon?: React.ReactNode
   onInputChange?: (value: string) => void
-} & InputHTMLAttributes<HTMLInputElement>
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>
 
-const TextField = ({ label, labelFor, icon, ...props }: TextFieldProps) => (
-  <>
-    <S.Label htmlFor={labelFor}>{label}</S.Label>
-    <S.Wrapper>
-      <S.Input id={labelFor} spellCheck={false} hasIcon={!!icon} {...props} />
-      <S.IconWrapper>{icon}</S.IconWrapper>
-    </S.Wrapper>
-  </>
-)
+const TextField = ({
+  label,
+  labelFor,
+  icon,
+  onInputChange,
+  initialValue,
+  ...props
+}: TextFieldProps) => {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    if (onInputChange) onInputChange(e.target.value)
+  }
+
+  return (
+    <>
+      <S.Label htmlFor={labelFor}>{label}</S.Label>
+      <S.Wrapper>
+        <S.Input
+          id={labelFor}
+          spellCheck={false}
+          hasIcon={!!icon}
+          onChange={handleChange}
+          defaultValue={initialValue}
+          {...props}
+        />
+        <S.IconWrapper>{icon}</S.IconWrapper>
+      </S.Wrapper>
+    </>
+  )
+}
 
 export default TextField

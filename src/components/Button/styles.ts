@@ -34,6 +34,7 @@ const buttonModifiers = {
     border: none;
     background-color: white;
     color: ${theme.colors.primary};
+    border: 1px solid white;
 
     &:hover {
       background-color: white;
@@ -56,6 +57,7 @@ export const Button = styled.button<ButtonProps>`
     border: none;
     color: white;
     border-radius: ${theme.border.radius};
+    border: 1px solid ${theme.colors.primary};
 
     font-weight: ${theme.font.bold};
     font-size: ${theme.font.sizes.small};
@@ -75,6 +77,7 @@ export const Button = styled.button<ButtonProps>`
       outline: black;
       background-color: white;
       color: ${theme.colors.lightGray};
+      border: 1px solid white;
       cursor: not-allowed;
     }
 

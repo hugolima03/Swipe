@@ -7,6 +7,23 @@ import GlobalStyles from '../src/styles/global'
 export const parameters = {
   nextRouter: {
     Provider: RouterContext.Provider
+  },
+  backgrounds: {
+    default: 'swipe-white',
+    values: [
+      {
+        name: 'swipe-white',
+        value: theme.colors.white
+      },
+      {
+        name: 'swipe-pink',
+        value: theme.colors.primary
+      },
+      {
+        name: 'swipe-dark',
+        value: theme.colors.black
+      }
+    ]
   }
 }
 

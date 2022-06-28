@@ -14,8 +14,10 @@ export type TextFieldProps = {
 const TextField = ({ label, labelFor, icon, ...props }: TextFieldProps) => (
   <>
     <S.Label htmlFor={labelFor}>{label}</S.Label>
-    <S.Input id={labelFor} {...props} />
-    {icon}
+    <S.Wrapper>
+      <S.Input id={labelFor} spellCheck={false} hasIcon={!!icon} {...props} />
+      <S.IconWrapper>{icon}</S.IconWrapper>
+    </S.Wrapper>
   </>
 )
 

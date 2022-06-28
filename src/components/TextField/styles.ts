@@ -1,4 +1,12 @@
 import styled, { css } from 'styled-components'
+import { lighten } from 'polished'
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 28.8rem;
+`
 
 export const Label = styled.label`
   ${({ theme }) => css`
@@ -11,8 +19,12 @@ export const Label = styled.label`
   `}
 `
 
-export const Input = styled.input`
-  ${({ theme, disabled }) => css`
+type InputProps = {
+  hasIcon: boolean
+}
+
+export const Input = styled.input<InputProps>`
+  ${({ theme, hasIcon }) => css`
     display: flex;
 
     outline: none;
@@ -29,6 +41,11 @@ export const Input = styled.input`
 
     padding: 0 ${theme.spacings.xsmall};
 
+    ${hasIcon &&
+    css`
+      padding-right: calc(${theme.spacings.xsmall} + 2.6rem);
+    `}
+
     transition: ${theme.transition.fast};
 
     &:hover {
@@ -43,6 +60,25 @@ export const Input = styled.input`
       cursor: not-allowed;
       border: 0.1rem solid ${theme.colors.gray};
       background-color: ${theme.colors.disabled};
+    }
+
+    &::placeholder {
+      color: ${lighten(0.4, theme.colors.gray)};
+    }
+  `}
+`
+
+export const IconWrapper = styled.span`
+  ${({ theme }) => css`
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 1.6rem;
+    transform: translateY(-50%);
+
+    svg {
+      height: 2.6rem;
+      fill: ${theme.colors.gray};
     }
   `}
 `

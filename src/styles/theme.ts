@@ -29,7 +29,9 @@ export default {
     yellow: '#FFD166',
     black: '#1E252B',
     mainBg: '#F7F7FF',
-    lightGray: '#B3ABBC'
+    gray: '#685879',
+    lightGray: '#B3ABBC',
+    disabled: '#EAEAEA'
   },
   spacings: {
     xxsmall: '0.8rem',

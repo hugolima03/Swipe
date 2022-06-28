@@ -5,6 +5,8 @@ describe('<Button />', () => {
   it('should render the children', () => {
     render(<Button>Teste</Button>)
     expect(screen.getByText(/Teste/i)).toBeInTheDocument()
+
+    expect(screen.getByText(/Teste/i)).toMatchSnapshot()
   })
 
   it('should render the primary style correctly', () => {

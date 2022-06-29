@@ -9,6 +9,8 @@ export default {
   font: {
     family:
       "Nunito Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    display:
+      "Bowlby One, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
     light: 300,
     normal: 400,
     bold: 700,
@@ -24,6 +26,8 @@ export default {
   },
   colors: {
     primary: '#FF2773',
+    white: '#FFF',
+    pink: '#FF2773',
     blue: '#4056F4',
     green: '#06D6A0',
     yellow: '#FFD166',

@@ -1,8 +1,12 @@
+import Logo from 'components/Logo'
+import { Menu, Notifications } from 'styled-icons/material-rounded'
 import * as S from './styles'
 
 const Header = () => (
   <S.Wrapper>
-    <h1>Header</h1>
+    <Menu />
+    <Logo />
+    <Notifications />
   </S.Wrapper>
 )
 

@@ -8,6 +8,9 @@ export const parameters = {
   nextRouter: {
     Provider: RouterContext.Provider
   },
+  viewport: {
+    defaultViewport: 'mobile1'
+  },
   backgrounds: {
     values: [
       { name: 'white', value: theme.colors.white },

@@ -15,17 +15,14 @@ const settings: SliderSettings = {
 }
 
 export type CategorySliderProps = {
-  categories: Category[]
+  categories: Pick<Category, 'name' | 'image' | 'id'>[]
 }
 
 const CategorySlider = ({ categories }: CategorySliderProps) => (
   <S.Wrapper>
     <Slider settings={settings}>
       {categories.map((category) => (
-        <>
-          <CategorySliderItem key={category.id} {...category} />
-          {console.log(category)}
-        </>
+        <CategorySliderItem key={category.id} {...category} />
       ))}
     </Slider>
   </S.Wrapper>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import * as S from './styles'
 
-type CategorySliderItemProps = Pick<Category, 'name' | 'image'>
+export type CategorySliderItemProps = Pick<Category, 'name' | 'image'>
 
 const CategorySliderItem = ({ name, image }: CategorySliderItemProps) => (
   <Link href="/" passHref>
@@ -13,6 +13,7 @@ const CategorySliderItem = ({ name, image }: CategorySliderItemProps) => (
         width={220}
         height={220}
         objectFit="cover"
+        alt={image.fileName}
       />
       <S.CategoryInfo>
         <p>{name}</p>

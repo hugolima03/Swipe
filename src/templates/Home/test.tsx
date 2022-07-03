@@ -4,7 +4,7 @@ import 'match-media-mock'
 import Home from '.'
 
 describe('<Home />', () => {
-  it('should render the heading', () => {
+  it('should render the heading, tabNavigator and content', () => {
     render(<Home categories={[]} />)
   })
 })

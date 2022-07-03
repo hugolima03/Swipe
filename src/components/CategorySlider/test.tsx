@@ -1,10 +1,14 @@
-import { render } from 'utils/test-utils'
+import { render, screen } from 'utils/test-utils'
 import 'match-media-mock'
+
+import { mock } from './mock'
 
 import CategorySlider from '.'
 
 describe('<CategorySlider />', () => {
-  it('should render the heading', () => {
-    render(<CategorySlider categories={[]} />)
+  it('should render the images', () => {
+    render(<CategorySlider categories={mock.categories} />)
+    expect(screen.getAllByText(/Math/i)).toHaveLength(3)
+    expect(screen.getAllByText(/History/i)).toHaveLength(3)
   })
 })

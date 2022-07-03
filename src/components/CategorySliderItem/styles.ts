@@ -2,11 +2,17 @@ import styled, { css } from 'styled-components'
 
 import Image from 'next/image'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.a`
   display: flex;
   width: fit-content;
 
+  margin: 0 1.2rem;
   position: relative;
+
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-drag: none;
 `
 
 export const CategoryImage = styled(Image)`

@@ -6,7 +6,7 @@ import * as S from './styles'
 type ButtonTypes = ButtonHTMLAttributes<HTMLButtonElement>
 
 export type ButtonProps = {
-  styleType?: 'default' | 'outline' | 'minimal'
+  styleType?: 'default' | 'outline' | 'minimal' | 'icon'
   loading?: boolean
   children: React.ReactNode
   backgroundColor?: 'blue' | 'green'

@@ -37,6 +37,9 @@ export default {
     lightGray: '#B3ABBC',
     disabled: '#EAEAEA'
   },
+  gradients: {
+    blue: 'linear-gradient(90.38deg, #3F37C9 -11.12%, #1BEAFF 110.38%)'
+  },
   spacings: {
     xxsmall: '0.8rem',
     xsmall: '1.6rem',

@@ -4,7 +4,7 @@ import styled, { css, DefaultTheme } from 'styled-components'
 
 type ButtonProps = {
   backgroundColor?: 'blue' | 'green'
-  styleType: 'default' | 'outline' | 'minimal'
+  styleType: 'default' | 'outline' | 'minimal' | 'icon'
 }
 
 const backgrounds = {
@@ -37,6 +37,25 @@ const buttonModifiers = {
     border: 1px solid white;
 
     &:hover {
+      background-color: white;
+    }
+  `,
+  icon: (theme: DefaultTheme) => css`
+    border: none;
+    background-color: white;
+    color: ${theme.colors.primary};
+    border: 1px solid white;
+    min-width: auto;
+    padding: 0.8rem;
+    box-shadow: none;
+    border: none;
+
+    svg {
+      fill: ${theme.colors.black};
+    }
+
+    &:hover {
+      border: none;
       background-color: white;
     }
   `

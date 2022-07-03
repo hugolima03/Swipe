@@ -13,7 +13,7 @@ export const parameters = {
   },
   backgrounds: {
     values: [
-      { name: 'white', value: theme.colors.white },
+      { name: 'white', value: theme.colors.mainBg },
       { name: 'pink', value: theme.colors.primary },
       { name: 'dark', value: theme.colors.black }
     ]

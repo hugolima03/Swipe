@@ -60,5 +60,8 @@ export default {
     default: '0.3s ease-in-out',
     fast: '0.1s ease-in-out'
   },
-  shadows: { default: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' }
+  shadows: {
+    default: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+    tabNavigator: 'rgba(25, 1, 52, 0.16) 0px 4px 10px '
+  }
 } as const

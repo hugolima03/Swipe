@@ -1,5 +1,6 @@
 import CategorySliderItem from 'components/CategorySliderItem'
 import Slider, { SliderSettings } from 'components/Slider'
+import { Category } from 'generated/graphql'
 
 import * as S from './styles'
 
@@ -13,12 +14,19 @@ const settings: SliderSettings = {
   centerPadding: '60px'
 }
 
-const CategorySlider = () => (
+export type CategorySliderProps = {
+  categories: Category[]
+}
+
+const CategorySlider = ({ categories }: CategorySliderProps) => (
   <S.Wrapper>
     <Slider settings={settings}>
-      <CategorySliderItem />
-      <CategorySliderItem />
-      <CategorySliderItem />
+      {categories.map((category) => (
+        <>
+          <CategorySliderItem key={category.id} {...category} />
+          {console.log(category)}
+        </>
+      ))}
     </Slider>
   </S.Wrapper>
 )

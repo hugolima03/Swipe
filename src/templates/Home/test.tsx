@@ -5,6 +5,6 @@ import Home from '.'
 
 describe('<Home />', () => {
   it('should render the heading', () => {
-    render(<Home />)
+    render(<Home categories={[]} />)
   })
 })

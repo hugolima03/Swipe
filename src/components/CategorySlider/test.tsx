@@ -5,6 +5,6 @@ import CategorySlider from '.'
 
 describe('<CategorySlider />', () => {
   it('should render the heading', () => {
-    render(<CategorySlider />)
+    render(<CategorySlider categories={[]} />)
   })
 })

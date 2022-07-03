@@ -1,13 +1,16 @@
+import { ApolloProvider } from '@apollo/client'
+
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
+import client from 'utils/apollo-client'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <Head>
           <title>Swipe - Your study buddy</title>
@@ -25,7 +28,7 @@ function App({ Component, pageProps }: AppProps) {
         <GlobalStyles />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </ApolloProvider>
   )
 }
 

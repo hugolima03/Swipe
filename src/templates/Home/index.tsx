@@ -1,19 +1,24 @@
 import Button from 'components/Button'
 import CategorySlider from 'components/CategorySlider'
+import { Category } from 'generated/graphql'
 
 import Base from 'templates/Base'
 
 import * as S from './styles'
 
-const Home = () => (
-  <Base>
-    <CategorySlider />
+export type HomeProps = {
+  categories: Category[]
+}
 
-    <S.NoStudies>
-      <p>Looks like you don't have study groups</p>
-      <Button>Create Studies</Button>
-    </S.NoStudies>
-  </Base>
-)
+export default function Home({ categories }: HomeProps) {
+  return (
+    <Base>
+      <CategorySlider categories={categories} />
 
-export default Home
+      <S.NoStudies>
+        <p>Looks like you don't have study groups</p>
+        <Button>Create Studies</Button>
+      </S.NoStudies>
+    </Base>
+  )
+}

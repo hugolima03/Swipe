@@ -1,18 +1,21 @@
+import { Category } from 'generated/graphql'
 import Link from 'next/link'
 
 import * as S from './styles'
 
-const CategorySliderItem = () => (
+type CategorySliderItemProps = Pick<Category, 'name' | 'image'>
+
+const CategorySliderItem = ({ name, image }: CategorySliderItemProps) => (
   <Link href="/" passHref>
     <S.Wrapper>
       <S.CategoryImage
-        src="https://source.unsplash.com/user/willianjusten/"
+        src={image.url}
         width={220}
         height={220}
         objectFit="cover"
       />
       <S.CategoryInfo>
-        <p>History</p>
+        <p>{name}</p>
       </S.CategoryInfo>
     </S.Wrapper>
   </Link>

@@ -16,6 +16,8 @@ export const Wrapper = styled.div`
     left: 0;
     right: 0;
 
+    z-index: ${theme.layers.menu};
+
     ${Button} {
       top: 1.6rem;
       right: 1.6rem;

@@ -1,11 +1,10 @@
-import Button from 'components/Button'
 import CategorySliderItem from 'components/CategorySliderItem'
+import Base from 'templates/Base'
 
 export default function Index() {
   return (
-    <>
-      <Button>Label</Button>
+    <Base>
       <CategorySliderItem />
-    </>
+    </Base>
   )
 }

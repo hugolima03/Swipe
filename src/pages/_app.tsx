@@ -19,6 +19,8 @@ function App({ Component, pageProps }: AppProps) {
             name="description"
             content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
           />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
         </Head>
         <GlobalStyles />
         <Component {...pageProps} />

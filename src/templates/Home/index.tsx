@@ -7,7 +7,7 @@ import Base from 'templates/Base'
 import * as S from './styles'
 
 export type HomeProps = {
-  categories: Category[]
+  categories: Pick<Category, 'name' | 'image' | 'slug' | 'id'>[]
 }
 
 export default function Home({ categories }: HomeProps) {

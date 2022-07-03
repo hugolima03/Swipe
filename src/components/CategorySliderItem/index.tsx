@@ -3,10 +3,10 @@ import Link from 'next/link'
 
 import * as S from './styles'
 
-export type CategorySliderItemProps = Pick<Category, 'name' | 'image'>
+export type CategorySliderItemProps = Pick<Category, 'name' | 'image' | 'slug'>
 
-const CategorySliderItem = ({ name, image }: CategorySliderItemProps) => (
-  <Link href="/" passHref>
+const CategorySliderItem = ({ name, image, slug }: CategorySliderItemProps) => (
+  <Link href={`/${slug}`} passHref>
     <S.Wrapper>
       <S.CategoryImage
         src={image.url}

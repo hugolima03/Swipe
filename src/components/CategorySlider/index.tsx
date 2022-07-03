@@ -15,7 +15,7 @@ const settings: SliderSettings = {
 }
 
 export type CategorySliderProps = {
-  categories: Pick<Category, 'name' | 'image' | 'id'>[]
+  categories: Pick<Category, 'name' | 'image' | 'id' | 'slug'>[]
 }
 
 const CategorySlider = ({ categories }: CategorySliderProps) => (

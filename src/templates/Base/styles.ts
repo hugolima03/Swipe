@@ -30,7 +30,10 @@ export const Wrapper = styled.div`
 export const Content = styled.main`
   ${({ theme }) => css`
     padding-top: ${theme.spacings.small};
+    display: flex;
+    flex-direction: column;
     flex: 1 0 auto;
+
     overflow: auto;
 
     /* background-color: ${theme.colors.mainBg}; */

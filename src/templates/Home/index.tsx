@@ -2,6 +2,8 @@ import Button from 'components/Button'
 import CategorySlider from 'components/CategorySlider'
 import { Category } from 'generated/graphql'
 
+import { motion } from 'framer-motion'
+
 import Base from 'templates/Base'
 
 import * as S from './styles'
@@ -16,7 +18,7 @@ export default function Home({ categories }: HomeProps) {
       <CategorySlider categories={categories} />
 
       <S.NoStudies>
-        <p>Looks like you don't have study groups</p>
+        <motion.p>Looks like you don't have study groups</motion.p>
         <Button>Create Studies</Button>
       </S.NoStudies>
     </Base>

@@ -1,7 +1,8 @@
 import { CategoryInfo } from 'components/CategorySliderItem/styles'
+import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 
-export const ImageWrapper = styled.div`
+export const ImageWrapper = styled(motion.div)`
   ${({ theme }) => css`
     display: flex;
     position: relative;
@@ -20,6 +21,7 @@ export const CategoryImage = styled.div`
 
   height: 26rem;
   background: url('https://source.unsplash.com/user/willianjusten/1042x580');
+  background-size: contain;
 `
 
 export const ListWrapper = styled.div`

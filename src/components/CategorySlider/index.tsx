@@ -9,7 +9,7 @@ const settings: SliderSettings = {
   arrows: false,
   vertical: false,
   verticalSwiping: false,
-  infinite: true,
+  infinite: false,
   centerMode: true,
   centerPadding: '60px'
 }

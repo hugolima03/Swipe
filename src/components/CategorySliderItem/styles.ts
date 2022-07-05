@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { motion } from 'framer-motion'
-
-export const Wrapper = styled(motion.a)`
+export const Wrapper = styled.a`
   display: flex;
   width: fit-content;
 
@@ -15,7 +13,7 @@ export const Wrapper = styled(motion.a)`
   -webkit-user-drag: none;
 `
 
-export const CategoryImage = styled(motion.img)`
+export const CategoryImage = styled.img`
   ${({ theme }) => css`
     border-radius: ${theme.border.radius};
   `}

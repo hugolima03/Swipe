@@ -1,8 +1,7 @@
 import { CategoryInfo } from 'components/CategorySliderItem/styles'
-import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 
-export const ImageWrapper = styled(motion.div)`
+export const ImageWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     position: relative;

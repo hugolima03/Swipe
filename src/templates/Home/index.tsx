@@ -18,7 +18,7 @@ export default function Home({ categories }: HomeProps) {
       <CategorySlider categories={categories} />
 
       <S.NoStudies>
-        <motion.p>Looks like you don't have study groups</motion.p>
+        <p>Looks like you don't have study groups</p>
         <Button>Create Studies</Button>
       </S.NoStudies>
     </Base>

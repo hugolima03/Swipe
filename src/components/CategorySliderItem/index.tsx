@@ -6,8 +6,8 @@ import * as S from './styles'
 export type CategorySliderItemProps = Pick<Category, 'name' | 'image' | 'slug'>
 
 const CategorySliderItem = ({ name, image, slug }: CategorySliderItemProps) => (
-  <Link href={`/${slug}`} passHref>
-    <S.Wrapper layoutId={slug as string}>
+  <Link href={`categories/${slug}`} passHref>
+    <S.Wrapper>
       <S.CategoryImage
         style={{ background: `url(${image.url})`, backgroundSize: 'cover' }}
         width={220}

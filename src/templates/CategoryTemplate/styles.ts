@@ -13,6 +13,19 @@ export const ImageWrapper = styled.div`
         font-size: calc(${theme.font.sizes.medium} * 2);
       }
     }
+
+    #close {
+      position: absolute;
+
+      top: 1.6rem;
+      right: 1.6rem;
+      background-color: rgba(1, 1, 1, 0.6);
+
+      svg {
+        height: 2.4rem;
+        fill: white;
+      }
+    }
   `}
 `
 export const CategoryImage = styled.div`

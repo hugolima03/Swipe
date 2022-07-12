@@ -44,4 +44,18 @@ describe('<Menu />', () => {
 
     expect(onClick).toHaveBeenCalled()
   })
+
+  it('should not fire click event when close button is clicked', () => {
+    useRouter.mockImplementationOnce(() => ({
+      pathname: '/explore'
+    }))
+
+    const onClick = jest.fn()
+
+    render(<Menu onClose={undefined} setOpen={() => ({})} />)
+
+    fireEvent.click(screen.getByRole('button'))
+
+    expect(onClick).not.toHaveBeenCalled()
+  })
 })

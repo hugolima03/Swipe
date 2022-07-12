@@ -57,10 +57,16 @@ describe('<Button />', () => {
       }
     )
   })
-  it('should render the custom background color style correctly', () => {
+  it('should render the custom blue background color style correctly', () => {
     render(<Button backgroundColor="blue">Teste</Button>)
     expect(screen.getByRole('button', { name: /Teste/i })).toHaveStyle({
       backgroundColor: 'rgb(64, 86, 244);'
+    })
+  })
+  it('should render the custom green background color style correctly', () => {
+    render(<Button backgroundColor="green">Teste</Button>)
+    expect(screen.getByRole('button', { name: /Teste/i })).toHaveStyle({
+      backgroundColor: 'rgb(6, 214, 160);'
     })
   })
   it('should disable button when loading', () => {

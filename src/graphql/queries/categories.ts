@@ -14,12 +14,25 @@ export const QUERY_CATEGORIES = gql`
 `
 
 export const QUERY_GET_CATEGORY_BY_SLUG = gql`
-  query GetCategoryBySlug {
-    categories(where: { slug: "history" }) {
+  query GetCategoryBySlug($slug: String!) {
+    categories(where: { slug: $slug }) {
       name
       image {
         url
       }
+      studyCollections {
+        id
+        name
+        slug
+      }
+    }
+  }
+`
+
+export const QUERY_GET_CATEGORY_PAGES = gql`
+  query GetCategoryPages {
+    categories {
+      slug
     }
   }
 `

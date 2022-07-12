@@ -4841,10 +4841,17 @@ export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type CategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', id: string, name: string, slug?: string | null, image: { __typename?: 'Asset', url: string } }> };
 
-export type GetCategoryBySlugQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetCategoryBySlugQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
 
 
-export type GetCategoryBySlugQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', name: string, image: { __typename?: 'Asset', url: string } }> };
+export type GetCategoryBySlugQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', name: string, image: { __typename?: 'Asset', url: string }, studyCollections: Array<{ __typename?: 'StudyCollection', id: string, name: string, slug: string }> }> };
+
+export type GetCategoryPagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCategoryPagesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', slug: string }> };
 
 
 export const CategoriesDocument = gql`
@@ -4887,11 +4894,16 @@ export type CategoriesQueryHookResult = ReturnType<typeof useCategoriesQuery>;
 export type CategoriesLazyQueryHookResult = ReturnType<typeof useCategoriesLazyQuery>;
 export type CategoriesQueryResult = Apollo.QueryResult<CategoriesQuery, CategoriesQueryVariables>;
 export const GetCategoryBySlugDocument = gql`
-    query GetCategoryBySlug {
-  categories(where: {slug: "history"}) {
+    query GetCategoryBySlug($slug: String!) {
+  categories(where: {slug: $slug}) {
     name
     image {
       url
+    }
+    studyCollections {
+      id
+      name
+      slug
     }
   }
 }
@@ -4909,10 +4921,11 @@ export const GetCategoryBySlugDocument = gql`
  * @example
  * const { data, loading, error } = useGetCategoryBySlugQuery({
  *   variables: {
+ *      slug: // value for 'slug'
  *   },
  * });
  */
-export function useGetCategoryBySlugQuery(baseOptions?: Apollo.QueryHookOptions<GetCategoryBySlugQuery, GetCategoryBySlugQueryVariables>) {
+export function useGetCategoryBySlugQuery(baseOptions: Apollo.QueryHookOptions<GetCategoryBySlugQuery, GetCategoryBySlugQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetCategoryBySlugQuery, GetCategoryBySlugQueryVariables>(GetCategoryBySlugDocument, options);
       }
@@ -4923,3 +4936,37 @@ export function useGetCategoryBySlugLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type GetCategoryBySlugQueryHookResult = ReturnType<typeof useGetCategoryBySlugQuery>;
 export type GetCategoryBySlugLazyQueryHookResult = ReturnType<typeof useGetCategoryBySlugLazyQuery>;
 export type GetCategoryBySlugQueryResult = Apollo.QueryResult<GetCategoryBySlugQuery, GetCategoryBySlugQueryVariables>;
+export const GetCategoryPagesDocument = gql`
+    query GetCategoryPages {
+  categories {
+    slug
+  }
+}
+    `;
+
+/**
+ * __useGetCategoryPagesQuery__
+ *
+ * To run a query within a React component, call `useGetCategoryPagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCategoryPagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCategoryPagesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCategoryPagesQuery(baseOptions?: Apollo.QueryHookOptions<GetCategoryPagesQuery, GetCategoryPagesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCategoryPagesQuery, GetCategoryPagesQueryVariables>(GetCategoryPagesDocument, options);
+      }
+export function useGetCategoryPagesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCategoryPagesQuery, GetCategoryPagesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCategoryPagesQuery, GetCategoryPagesQueryVariables>(GetCategoryPagesDocument, options);
+        }
+export type GetCategoryPagesQueryHookResult = ReturnType<typeof useGetCategoryPagesQuery>;
+export type GetCategoryPagesLazyQueryHookResult = ReturnType<typeof useGetCategoryPagesLazyQuery>;
+export type GetCategoryPagesQueryResult = Apollo.QueryResult<GetCategoryPagesQuery, GetCategoryPagesQueryVariables>;

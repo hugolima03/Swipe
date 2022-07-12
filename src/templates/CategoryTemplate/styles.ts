@@ -28,12 +28,10 @@ export const ImageWrapper = styled.div`
     }
   `}
 `
-export const CategoryImage = styled.div`
+export const CategoryImageWrapper = styled.div`
   width: 100vw;
-
   height: 26rem;
-  background: url('https://source.unsplash.com/user/willianjusten/1042x580');
-  background-size: contain;
+  position: relative;
 `
 
 export const ListWrapper = styled.div`

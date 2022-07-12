@@ -5,17 +5,23 @@ import { useState } from 'react'
 import { Menu as MenuIcon, Notifications } from 'styled-icons/material-rounded'
 import * as S from './styles'
 
-const Header = () => {
+type HeaderProps = {
+  enableMenu?: boolean
+}
+
+const Header = ({ enableMenu = true }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <>
       <S.Wrapper>
-        <Button styleType="icon" onClick={() => setIsMenuOpen(true)}>
-          <MenuIcon aria-label="open-menu" />
-        </Button>
+        {enableMenu && (
+          <Button styleType="icon" onClick={() => setIsMenuOpen(true)}>
+            <MenuIcon aria-label="open-menu" />
+          </Button>
+        )}
         <Logo />
-        <Button styleType="icon">
+        <Button styleType="icon" style={{ gridArea: 'right' }}>
           <Notifications />
         </Button>
       </S.Wrapper>

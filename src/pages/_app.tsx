@@ -1,4 +1,5 @@
 import { ApolloProvider } from '@apollo/client'
+import NextNProgress from 'nextjs-progressbar'
 
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -26,6 +27,10 @@ function App({ Component, pageProps }: AppProps) {
           <meta name="mobile-web-app-capable" content="yes" />
         </Head>
         <GlobalStyles />
+        <NextNProgress
+          color={theme.colors.blue}
+          options={{ showSpinner: false }}
+        />
         <Component {...pageProps} />
       </ThemeProvider>
     </ApolloProvider>

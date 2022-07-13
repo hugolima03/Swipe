@@ -35,10 +35,9 @@ export const CategoryImageWrapper = styled.div`
 `
 
 export const ListWrapper = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     display: flex;
     flex-direction: column;
-    margin: 0 ${theme.spacings.xsmall};
     overflow: auto;
   `}
 `

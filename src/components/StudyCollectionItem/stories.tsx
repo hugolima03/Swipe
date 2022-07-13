@@ -8,7 +8,7 @@ export default {
 
 export const Default: Story = () => (
   <>
-    <StudyCollectionItem />
-    <StudyCollectionItem />
+    <StudyCollectionItem id="1" name="Name1" />
+    <StudyCollectionItem id="2" name="Name2" />
   </>
 )

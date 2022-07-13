@@ -6,10 +6,9 @@ export const IconWrapper = styled.div`
     align-items: center;
     justify-content: center;
 
-    width: 4rem;
-    height: 4rem;
     border-radius: 0.4rem;
     background-color: ${theme.colors.green};
+    padding: calc(${theme.spacings.xxsmall} / 2);
 
     svg {
       height: 3.4rem;
@@ -18,12 +17,19 @@ export const IconWrapper = styled.div`
   `}
 `
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.a`
   ${({ theme }) => css`
     display: flex;
     flex-direction: row;
-
-    padding: ${theme.spacings.xsmall} 0;
+    align-items: center;
+    padding: ${theme.spacings.xsmall};
+    background-color: white;
+    border: none;
+    outline: none;
+    font-family: ${theme.font.family};
+    text-align: start;
+    color: ${theme.colors.black};
+    text-decoration: none;
 
     gap: ${theme.spacings.xxsmall};
 
@@ -47,6 +53,10 @@ export const Wrapper = styled.div`
 
     & + & {
       border-top: 1px solid ${theme.colors.lightGray};
+    }
+
+    &:visited {
+      text-decoration: none;
     }
   `}
 `

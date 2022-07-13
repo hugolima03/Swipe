@@ -21,7 +21,7 @@ const CategoryTemplate = ({
   const { back } = useRouter()
 
   return (
-    <Wrapper style={{ justifyContent: 'flex-start', gap: '0.8rem' }}>
+    <Wrapper style={{ justifyContent: 'flex-start' }}>
       <S.ImageWrapper>
         <S.CategoryImageWrapper>
           <Image src={image.url as string} layout="fill" objectFit="cover" />
@@ -35,8 +35,8 @@ const CategoryTemplate = ({
       </S.ImageWrapper>
 
       <S.ListWrapper>
-        {studyCollections.map((study) => (
-          <StudyCollectionItem key={study.id} />
+        {studyCollections.map(({ id, name }) => (
+          <StudyCollectionItem key={id} id={id} name={name} />
         ))}
       </S.ListWrapper>
     </Wrapper>

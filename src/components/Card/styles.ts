@@ -7,6 +7,7 @@ export const Wrapper = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `
 
 export const Card = styled(motion.div)`

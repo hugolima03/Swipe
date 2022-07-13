@@ -10,4 +10,4 @@ export default {
   }
 } as Meta
 
-export const Default: Story = () => <Card />
+export const Default: Story = (args) => <Card {...args} />

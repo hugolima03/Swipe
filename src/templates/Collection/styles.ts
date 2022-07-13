@@ -42,6 +42,9 @@ export const Footer = styled.footer`
     justify-content: space-between;
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xsmall};
 
+    position: sticky;
+    bottom: 0;
+
     background-color: ${theme.colors.green};
   `}
 `

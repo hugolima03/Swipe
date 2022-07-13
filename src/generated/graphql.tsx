@@ -1171,7 +1171,7 @@ export type Category = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  slug?: Maybe<Scalars['String']>;
+  slug: Scalars['String'];
   /** System stage field */
   stage: Stage;
   studyCollections: Array<StudyCollection>;
@@ -1259,7 +1259,7 @@ export type CategoryCreateInput = {
   createdAt?: InputMaybe<Scalars['DateTime']>;
   image: AssetCreateOneInlineInput;
   name: Scalars['String'];
-  slug?: InputMaybe<Scalars['String']>;
+  slug: Scalars['String'];
   studyCollections?: InputMaybe<StudyCollectionCreateManyInlineInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
@@ -4839,7 +4839,7 @@ export enum _SystemDateTimeFieldVariation {
 export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', id: string, name: string, slug?: string | null, image: { __typename?: 'Asset', url: string } }> };
+export type CategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', id: string, name: string, slug: string, image: { __typename?: 'Asset', url: string } }> };
 
 export type GetCategoryBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -4852,6 +4852,18 @@ export type GetCategoryPagesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCategoryPagesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', slug: string }> };
+
+export type GetCollectionsPagesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCollectionsPagesQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', id: string }> };
+
+export type GetCollectionByIdQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetCollectionByIdQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', name: string, id: string, description?: string | null, image: { __typename?: 'Asset', url: string, fileName: string } }> };
 
 
 export const CategoriesDocument = gql`
@@ -4970,3 +4982,78 @@ export function useGetCategoryPagesLazyQuery(baseOptions?: Apollo.LazyQueryHookO
 export type GetCategoryPagesQueryHookResult = ReturnType<typeof useGetCategoryPagesQuery>;
 export type GetCategoryPagesLazyQueryHookResult = ReturnType<typeof useGetCategoryPagesLazyQuery>;
 export type GetCategoryPagesQueryResult = Apollo.QueryResult<GetCategoryPagesQuery, GetCategoryPagesQueryVariables>;
+export const GetCollectionsPagesDocument = gql`
+    query GetCollectionsPages {
+  studyCollections {
+    id
+  }
+}
+    `;
+
+/**
+ * __useGetCollectionsPagesQuery__
+ *
+ * To run a query within a React component, call `useGetCollectionsPagesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCollectionsPagesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCollectionsPagesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCollectionsPagesQuery(baseOptions?: Apollo.QueryHookOptions<GetCollectionsPagesQuery, GetCollectionsPagesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCollectionsPagesQuery, GetCollectionsPagesQueryVariables>(GetCollectionsPagesDocument, options);
+      }
+export function useGetCollectionsPagesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCollectionsPagesQuery, GetCollectionsPagesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCollectionsPagesQuery, GetCollectionsPagesQueryVariables>(GetCollectionsPagesDocument, options);
+        }
+export type GetCollectionsPagesQueryHookResult = ReturnType<typeof useGetCollectionsPagesQuery>;
+export type GetCollectionsPagesLazyQueryHookResult = ReturnType<typeof useGetCollectionsPagesLazyQuery>;
+export type GetCollectionsPagesQueryResult = Apollo.QueryResult<GetCollectionsPagesQuery, GetCollectionsPagesQueryVariables>;
+export const GetCollectionByIdDocument = gql`
+    query GetCollectionById($id: ID!) {
+  studyCollections(where: {id: $id}) {
+    name
+    id
+    description
+    image {
+      url
+      fileName
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCollectionByIdQuery__
+ *
+ * To run a query within a React component, call `useGetCollectionByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCollectionByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCollectionByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetCollectionByIdQuery(baseOptions: Apollo.QueryHookOptions<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>(GetCollectionByIdDocument, options);
+      }
+export function useGetCollectionByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>(GetCollectionByIdDocument, options);
+        }
+export type GetCollectionByIdQueryHookResult = ReturnType<typeof useGetCollectionByIdQuery>;
+export type GetCollectionByIdLazyQueryHookResult = ReturnType<typeof useGetCollectionByIdLazyQuery>;
+export type GetCollectionByIdQueryResult = Apollo.QueryResult<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>;

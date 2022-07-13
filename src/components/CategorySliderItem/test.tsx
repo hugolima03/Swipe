@@ -7,6 +7,7 @@ describe('<CategorySliderItem />', () => {
     render(
       <CategorySliderItem
         name="testee"
+        slug="slug"
         image={
           {
             url: 'https://source.unsplash.com/user/willianjusten/1042x580',

@@ -36,6 +36,11 @@ const buttonModifiers = {
     color: ${theme.colors.primary};
     border: 1px solid white;
 
+    svg,
+    circle {
+      fill: ${theme.colors.primary};
+    }
+
     &:hover {
       background-color: white;
     }

@@ -1770,6 +1770,434 @@ export type LocationInput = {
   longitude: Scalars['Float'];
 };
 
+export type Match = Node & {
+  __typename?: 'Match';
+  correctAnswers?: Maybe<Scalars['Int']>;
+  /** The time the document was created */
+  createdAt: Scalars['DateTime'];
+  /** User that created this document */
+  createdBy?: Maybe<User>;
+  /** Get the document in other stages */
+  documentInStages: Array<Match>;
+  /** List of Match versions */
+  history: Array<Version>;
+  /** The unique identifier */
+  id: Scalars['ID'];
+  /** The time the document was published. Null on documents in draft stage. */
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  /** User that last published this document */
+  publishedBy?: Maybe<User>;
+  scheduledIn: Array<ScheduledOperation>;
+  /** System stage field */
+  stage: Stage;
+  /** The time the document was updated */
+  updatedAt: Scalars['DateTime'];
+  /** User that last updated this document */
+  updatedBy?: Maybe<User>;
+  wrongAnswers?: Maybe<Scalars['Int']>;
+};
+
+
+export type MatchCreatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type MatchDocumentInStagesArgs = {
+  includeCurrent?: Scalars['Boolean'];
+  inheritLocale?: Scalars['Boolean'];
+  stages?: Array<Stage>;
+};
+
+
+export type MatchHistoryArgs = {
+  limit?: Scalars['Int'];
+  skip?: Scalars['Int'];
+  stageOverride?: InputMaybe<Stage>;
+};
+
+
+export type MatchPublishedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+
+export type MatchScheduledInArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ScheduledOperationWhereInput>;
+};
+
+
+export type MatchUpdatedByArgs = {
+  locales?: InputMaybe<Array<Locale>>;
+};
+
+export type MatchConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: MatchWhereUniqueInput;
+};
+
+/** A connection to a list of items. */
+export type MatchConnection = {
+  __typename?: 'MatchConnection';
+  aggregate: Aggregate;
+  /** A list of edges. */
+  edges: Array<MatchEdge>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+};
+
+export type MatchCreateInput = {
+  correctAnswers?: InputMaybe<Scalars['Int']>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  wrongAnswers?: InputMaybe<Scalars['Int']>;
+};
+
+export type MatchCreateManyInlineInput = {
+  /** Connect multiple existing Match documents */
+  connect?: InputMaybe<Array<MatchWhereUniqueInput>>;
+  /** Create and connect multiple existing Match documents */
+  create?: InputMaybe<Array<MatchCreateInput>>;
+};
+
+export type MatchCreateOneInlineInput = {
+  /** Connect one existing Match document */
+  connect?: InputMaybe<MatchWhereUniqueInput>;
+  /** Create and connect one Match document */
+  create?: InputMaybe<MatchCreateInput>;
+};
+
+/** An edge in a connection. */
+export type MatchEdge = {
+  __typename?: 'MatchEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String'];
+  /** The item at the end of the edge. */
+  node: Match;
+};
+
+/** Identifies documents */
+export type MatchManyWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MatchWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MatchWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MatchWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  correctAnswers?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  correctAnswers_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  correctAnswers_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  correctAnswers_in?: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  correctAnswers_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  correctAnswers_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  correctAnswers_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  correctAnswers_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  wrongAnswers?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  wrongAnswers_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  wrongAnswers_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  wrongAnswers_in?: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  wrongAnswers_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  wrongAnswers_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  wrongAnswers_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  wrongAnswers_not_in?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+export enum MatchOrderByInput {
+  CorrectAnswersAsc = 'correctAnswers_ASC',
+  CorrectAnswersDesc = 'correctAnswers_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  PublishedAtAsc = 'publishedAt_ASC',
+  PublishedAtDesc = 'publishedAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  WrongAnswersAsc = 'wrongAnswers_ASC',
+  WrongAnswersDesc = 'wrongAnswers_DESC'
+}
+
+export type MatchUpdateInput = {
+  correctAnswers?: InputMaybe<Scalars['Int']>;
+  wrongAnswers?: InputMaybe<Scalars['Int']>;
+};
+
+export type MatchUpdateManyInlineInput = {
+  /** Connect multiple existing Match documents */
+  connect?: InputMaybe<Array<MatchConnectInput>>;
+  /** Create and connect multiple Match documents */
+  create?: InputMaybe<Array<MatchCreateInput>>;
+  /** Delete multiple Match documents */
+  delete?: InputMaybe<Array<MatchWhereUniqueInput>>;
+  /** Disconnect multiple Match documents */
+  disconnect?: InputMaybe<Array<MatchWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing Match documents */
+  set?: InputMaybe<Array<MatchWhereUniqueInput>>;
+  /** Update multiple Match documents */
+  update?: InputMaybe<Array<MatchUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple Match documents */
+  upsert?: InputMaybe<Array<MatchUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type MatchUpdateManyInput = {
+  correctAnswers?: InputMaybe<Scalars['Int']>;
+  wrongAnswers?: InputMaybe<Scalars['Int']>;
+};
+
+export type MatchUpdateManyWithNestedWhereInput = {
+  /** Update many input */
+  data: MatchUpdateManyInput;
+  /** Document search */
+  where: MatchWhereInput;
+};
+
+export type MatchUpdateOneInlineInput = {
+  /** Connect existing Match document */
+  connect?: InputMaybe<MatchWhereUniqueInput>;
+  /** Create and connect one Match document */
+  create?: InputMaybe<MatchCreateInput>;
+  /** Delete currently connected Match document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected Match document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Match document */
+  update?: InputMaybe<MatchUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Match document */
+  upsert?: InputMaybe<MatchUpsertWithNestedWhereUniqueInput>;
+};
+
+export type MatchUpdateWithNestedWhereUniqueInput = {
+  /** Document to update */
+  data: MatchUpdateInput;
+  /** Unique document search */
+  where: MatchWhereUniqueInput;
+};
+
+export type MatchUpsertInput = {
+  /** Create document if it didn't exist */
+  create: MatchCreateInput;
+  /** Update document if it exists */
+  update: MatchUpdateInput;
+};
+
+export type MatchUpsertWithNestedWhereUniqueInput = {
+  /** Upsert data */
+  data: MatchUpsertInput;
+  /** Unique document search */
+  where: MatchWhereUniqueInput;
+};
+
+/** Identifies documents */
+export type MatchWhereInput = {
+  /** Logical AND on all given filters. */
+  AND?: InputMaybe<Array<MatchWhereInput>>;
+  /** Logical NOT on all given filters combined by AND. */
+  NOT?: InputMaybe<Array<MatchWhereInput>>;
+  /** Logical OR on all given filters. */
+  OR?: InputMaybe<Array<MatchWhereInput>>;
+  /** Contains search across all appropriate fields. */
+  _search?: InputMaybe<Scalars['String']>;
+  correctAnswers?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  correctAnswers_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  correctAnswers_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  correctAnswers_in?: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  correctAnswers_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  correctAnswers_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  correctAnswers_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  correctAnswers_not_in?: InputMaybe<Array<Scalars['Int']>>;
+  createdAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  createdAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  createdAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  createdAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  createdAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  createdAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  createdAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  createdBy?: InputMaybe<UserWhereInput>;
+  id?: InputMaybe<Scalars['ID']>;
+  /** All values containing the given string. */
+  id_contains?: InputMaybe<Scalars['ID']>;
+  /** All values ending with the given string. */
+  id_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are contained in given list. */
+  id_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values that are not equal to given value. */
+  id_not?: InputMaybe<Scalars['ID']>;
+  /** All values not containing the given string. */
+  id_not_contains?: InputMaybe<Scalars['ID']>;
+  /** All values not ending with the given string */
+  id_not_ends_with?: InputMaybe<Scalars['ID']>;
+  /** All values that are not contained in given list. */
+  id_not_in?: InputMaybe<Array<Scalars['ID']>>;
+  /** All values not starting with the given string. */
+  id_not_starts_with?: InputMaybe<Scalars['ID']>;
+  /** All values starting with the given string. */
+  id_starts_with?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  publishedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  publishedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  publishedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  publishedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  publishedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  publishedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  publishedBy?: InputMaybe<UserWhereInput>;
+  scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
+  scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  updatedAt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than the given value. */
+  updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
+  /** All values greater than or equal the given value. */
+  updatedAt_gte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are contained in given list. */
+  updatedAt_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  /** All values less than the given value. */
+  updatedAt_lt?: InputMaybe<Scalars['DateTime']>;
+  /** All values less than or equal the given value. */
+  updatedAt_lte?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not equal to given value. */
+  updatedAt_not?: InputMaybe<Scalars['DateTime']>;
+  /** All values that are not contained in given list. */
+  updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedBy?: InputMaybe<UserWhereInput>;
+  wrongAnswers?: InputMaybe<Scalars['Int']>;
+  /** All values greater than the given value. */
+  wrongAnswers_gt?: InputMaybe<Scalars['Int']>;
+  /** All values greater than or equal the given value. */
+  wrongAnswers_gte?: InputMaybe<Scalars['Int']>;
+  /** All values that are contained in given list. */
+  wrongAnswers_in?: InputMaybe<Array<Scalars['Int']>>;
+  /** All values less than the given value. */
+  wrongAnswers_lt?: InputMaybe<Scalars['Int']>;
+  /** All values less than or equal the given value. */
+  wrongAnswers_lte?: InputMaybe<Scalars['Int']>;
+  /** All values that are not equal to given value. */
+  wrongAnswers_not?: InputMaybe<Scalars['Int']>;
+  /** All values that are not contained in given list. */
+  wrongAnswers_not_in?: InputMaybe<Array<Scalars['Int']>>;
+};
+
+/** References Match record uniquely */
+export type MatchWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /**
@@ -1781,6 +2209,8 @@ export type Mutation = {
   createCard?: Maybe<Card>;
   /** Create one category */
   createCategory?: Maybe<Category>;
+  /** Create one match */
+  createMatch?: Maybe<Match>;
   /** Create one scheduledRelease */
   createScheduledRelease?: Maybe<ScheduledRelease>;
   /** Create one studyCollection */
@@ -1813,12 +2243,21 @@ export type Mutation = {
   /** Delete many Category documents, return deleted documents */
   deleteManyCategoriesConnection: CategoryConnection;
   /**
+   * Delete many Match documents
+   * @deprecated Please use the new paginated many mutation (deleteManyMatchesConnection)
+   */
+  deleteManyMatches: BatchPayload;
+  /** Delete many Match documents, return deleted documents */
+  deleteManyMatchesConnection: MatchConnection;
+  /**
    * Delete many StudyCollection documents
    * @deprecated Please use the new paginated many mutation (deleteManyStudyCollectionsConnection)
    */
   deleteManyStudyCollections: BatchPayload;
   /** Delete many StudyCollection documents, return deleted documents */
   deleteManyStudyCollectionsConnection: StudyCollectionConnection;
+  /** Delete one match from _all_ existing stages. Returns deleted document. */
+  deleteMatch?: Maybe<Match>;
   /** Delete and return scheduled operation */
   deleteScheduledOperation?: Maybe<ScheduledOperation>;
   /** Delete one scheduledRelease from _all_ existing stages. Returns deleted document. */
@@ -1853,12 +2292,21 @@ export type Mutation = {
   /** Publish many Category documents */
   publishManyCategoriesConnection: CategoryConnection;
   /**
+   * Publish many Match documents
+   * @deprecated Please use the new paginated many mutation (publishManyMatchesConnection)
+   */
+  publishManyMatches: BatchPayload;
+  /** Publish many Match documents */
+  publishManyMatchesConnection: MatchConnection;
+  /**
    * Publish many StudyCollection documents
    * @deprecated Please use the new paginated many mutation (publishManyStudyCollectionsConnection)
    */
   publishManyStudyCollections: BatchPayload;
   /** Publish many StudyCollection documents */
   publishManyStudyCollectionsConnection: StudyCollectionConnection;
+  /** Publish one match */
+  publishMatch?: Maybe<Match>;
   /** Publish one studyCollection */
   publishStudyCollection?: Maybe<StudyCollection>;
   /** Schedule to publish one asset */
@@ -1867,6 +2315,8 @@ export type Mutation = {
   schedulePublishCard?: Maybe<Card>;
   /** Schedule to publish one category */
   schedulePublishCategory?: Maybe<Category>;
+  /** Schedule to publish one match */
+  schedulePublishMatch?: Maybe<Match>;
   /** Schedule to publish one studyCollection */
   schedulePublishStudyCollection?: Maybe<StudyCollection>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -1875,6 +2325,8 @@ export type Mutation = {
   scheduleUnpublishCard?: Maybe<Card>;
   /** Unpublish one category from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishCategory?: Maybe<Category>;
+  /** Unpublish one match from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  scheduleUnpublishMatch?: Maybe<Match>;
   /** Unpublish one studyCollection from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   scheduleUnpublishStudyCollection?: Maybe<StudyCollection>;
   /** Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
@@ -1905,12 +2357,21 @@ export type Mutation = {
   /** Find many Category documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyCategoriesConnection: CategoryConnection;
   /**
+   * Unpublish many Match documents
+   * @deprecated Please use the new paginated many mutation (unpublishManyMatchesConnection)
+   */
+  unpublishManyMatches: BatchPayload;
+  /** Find many Match documents that match criteria in specified stage and unpublish from target stages */
+  unpublishManyMatchesConnection: MatchConnection;
+  /**
    * Unpublish many StudyCollection documents
    * @deprecated Please use the new paginated many mutation (unpublishManyStudyCollectionsConnection)
    */
   unpublishManyStudyCollections: BatchPayload;
   /** Find many StudyCollection documents that match criteria in specified stage and unpublish from target stages */
   unpublishManyStudyCollectionsConnection: StudyCollectionConnection;
+  /** Unpublish one match from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
+  unpublishMatch?: Maybe<Match>;
   /** Unpublish one studyCollection from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only. */
   unpublishStudyCollection?: Maybe<StudyCollection>;
   /** Update one asset */
@@ -1941,12 +2402,21 @@ export type Mutation = {
   /** Update many Category documents */
   updateManyCategoriesConnection: CategoryConnection;
   /**
+   * Update many matches
+   * @deprecated Please use the new paginated many mutation (updateManyMatchesConnection)
+   */
+  updateManyMatches: BatchPayload;
+  /** Update many Match documents */
+  updateManyMatchesConnection: MatchConnection;
+  /**
    * Update many studyCollections
    * @deprecated Please use the new paginated many mutation (updateManyStudyCollectionsConnection)
    */
   updateManyStudyCollections: BatchPayload;
   /** Update many StudyCollection documents */
   updateManyStudyCollectionsConnection: StudyCollectionConnection;
+  /** Update one match */
+  updateMatch?: Maybe<Match>;
   /** Update one scheduledRelease */
   updateScheduledRelease?: Maybe<ScheduledRelease>;
   /** Update one studyCollection */
@@ -1957,6 +2427,8 @@ export type Mutation = {
   upsertCard?: Maybe<Card>;
   /** Upsert one category */
   upsertCategory?: Maybe<Category>;
+  /** Upsert one match */
+  upsertMatch?: Maybe<Match>;
   /** Upsert one studyCollection */
   upsertStudyCollection?: Maybe<StudyCollection>;
 };
@@ -1974,6 +2446,11 @@ export type MutationCreateCardArgs = {
 
 export type MutationCreateCategoryArgs = {
   data: CategoryCreateInput;
+};
+
+
+export type MutationCreateMatchArgs = {
+  data: MatchCreateInput;
 };
 
 
@@ -2047,6 +2524,21 @@ export type MutationDeleteManyCategoriesConnectionArgs = {
 };
 
 
+export type MutationDeleteManyMatchesArgs = {
+  where?: InputMaybe<MatchManyWhereInput>;
+};
+
+
+export type MutationDeleteManyMatchesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<MatchManyWhereInput>;
+};
+
+
 export type MutationDeleteManyStudyCollectionsArgs = {
   where?: InputMaybe<StudyCollectionManyWhereInput>;
 };
@@ -2059,6 +2551,11 @@ export type MutationDeleteManyStudyCollectionsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<StudyCollectionManyWhereInput>;
+};
+
+
+export type MutationDeleteMatchArgs = {
+  where: MatchWhereUniqueInput;
 };
 
 
@@ -2158,6 +2655,24 @@ export type MutationPublishManyCategoriesConnectionArgs = {
 };
 
 
+export type MutationPublishManyMatchesArgs = {
+  to?: Array<Stage>;
+  where?: InputMaybe<MatchManyWhereInput>;
+};
+
+
+export type MutationPublishManyMatchesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: InputMaybe<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  to?: Array<Stage>;
+  where?: InputMaybe<MatchManyWhereInput>;
+};
+
+
 export type MutationPublishManyStudyCollectionsArgs = {
   to?: Array<Stage>;
   where?: InputMaybe<StudyCollectionManyWhereInput>;
@@ -2173,6 +2688,12 @@ export type MutationPublishManyStudyCollectionsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   to?: Array<Stage>;
   where?: InputMaybe<StudyCollectionManyWhereInput>;
+};
+
+
+export type MutationPublishMatchArgs = {
+  to?: Array<Stage>;
+  where: MatchWhereUniqueInput;
 };
 
 
@@ -2209,6 +2730,14 @@ export type MutationSchedulePublishCategoryArgs = {
 };
 
 
+export type MutationSchedulePublishMatchArgs = {
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  to?: Array<Stage>;
+  where: MatchWhereUniqueInput;
+};
+
+
 export type MutationSchedulePublishStudyCollectionArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
@@ -2240,6 +2769,14 @@ export type MutationScheduleUnpublishCategoryArgs = {
   releaseAt?: InputMaybe<Scalars['DateTime']>;
   releaseId?: InputMaybe<Scalars['String']>;
   where: CategoryWhereUniqueInput;
+};
+
+
+export type MutationScheduleUnpublishMatchArgs = {
+  from?: Array<Stage>;
+  releaseAt?: InputMaybe<Scalars['DateTime']>;
+  releaseId?: InputMaybe<Scalars['String']>;
+  where: MatchWhereUniqueInput;
 };
 
 
@@ -2329,6 +2866,24 @@ export type MutationUnpublishManyCategoriesConnectionArgs = {
 };
 
 
+export type MutationUnpublishManyMatchesArgs = {
+  from?: Array<Stage>;
+  where?: InputMaybe<MatchManyWhereInput>;
+};
+
+
+export type MutationUnpublishManyMatchesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  first?: InputMaybe<Scalars['Int']>;
+  from?: Array<Stage>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: InputMaybe<Stage>;
+  where?: InputMaybe<MatchManyWhereInput>;
+};
+
+
 export type MutationUnpublishManyStudyCollectionsArgs = {
   from?: Array<Stage>;
   where?: InputMaybe<StudyCollectionManyWhereInput>;
@@ -2344,6 +2899,12 @@ export type MutationUnpublishManyStudyCollectionsConnectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   stage?: InputMaybe<Stage>;
   where?: InputMaybe<StudyCollectionManyWhereInput>;
+};
+
+
+export type MutationUnpublishMatchArgs = {
+  from?: Array<Stage>;
+  where: MatchWhereUniqueInput;
 };
 
 
@@ -2422,6 +2983,23 @@ export type MutationUpdateManyCategoriesConnectionArgs = {
 };
 
 
+export type MutationUpdateManyMatchesArgs = {
+  data: MatchUpdateManyInput;
+  where?: InputMaybe<MatchManyWhereInput>;
+};
+
+
+export type MutationUpdateManyMatchesConnectionArgs = {
+  after?: InputMaybe<Scalars['ID']>;
+  before?: InputMaybe<Scalars['ID']>;
+  data: MatchUpdateManyInput;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<MatchManyWhereInput>;
+};
+
+
 export type MutationUpdateManyStudyCollectionsArgs = {
   data: StudyCollectionUpdateManyInput;
   where?: InputMaybe<StudyCollectionManyWhereInput>;
@@ -2436,6 +3014,12 @@ export type MutationUpdateManyStudyCollectionsConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<StudyCollectionManyWhereInput>;
+};
+
+
+export type MutationUpdateMatchArgs = {
+  data: MatchUpdateInput;
+  where: MatchWhereUniqueInput;
 };
 
 
@@ -2466,6 +3050,12 @@ export type MutationUpsertCardArgs = {
 export type MutationUpsertCategoryArgs = {
   upsert: CategoryUpsertInput;
   where: CategoryWhereUniqueInput;
+};
+
+
+export type MutationUpsertMatchArgs = {
+  upsert: MatchUpsertInput;
+  where: MatchWhereUniqueInput;
 };
 
 
@@ -2530,6 +3120,14 @@ export type Query = {
   category?: Maybe<Category>;
   /** Retrieve document version */
   categoryVersion?: Maybe<DocumentVersion>;
+  /** Retrieve a single match */
+  match?: Maybe<Match>;
+  /** Retrieve document version */
+  matchVersion?: Maybe<DocumentVersion>;
+  /** Retrieve multiple matches */
+  matches: Array<Match>;
+  /** Retrieve multiple matches using the Relay connection interface */
+  matchesConnection: MatchConnection;
   /** Fetches an object given its ID */
   node?: Maybe<Node>;
   /** Retrieve a single scheduledOperation */
@@ -2672,6 +3270,44 @@ export type QueryCategoryArgs = {
 
 export type QueryCategoryVersionArgs = {
   where: VersionWhereInput;
+};
+
+
+export type QueryMatchArgs = {
+  locales?: Array<Locale>;
+  stage?: Stage;
+  where: MatchWhereUniqueInput;
+};
+
+
+export type QueryMatchVersionArgs = {
+  where: VersionWhereInput;
+};
+
+
+export type QueryMatchesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<MatchOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<MatchWhereInput>;
+};
+
+
+export type QueryMatchesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: Array<Locale>;
+  orderBy?: InputMaybe<MatchOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  stage?: Stage;
+  where?: InputMaybe<MatchWhereInput>;
 };
 
 
@@ -2925,7 +3561,7 @@ export type ScheduledOperationUpdatedByArgs = {
   locales?: InputMaybe<Array<Locale>>;
 };
 
-export type ScheduledOperationAffectedDocument = Asset | Card | Category | StudyCollection;
+export type ScheduledOperationAffectedDocument = Asset | Card | Category | Match | StudyCollection;
 
 export type ScheduledOperationConnectInput = {
   /** Allow to specify document position in list of connected documents, will default to appending at end of list */
@@ -4865,6 +5501,20 @@ export type GetCollectionByIdQueryVariables = Exact<{
 
 export type GetCollectionByIdQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', name: string, id: string, description?: string | null, image: { __typename?: 'Asset', url: string, fileName: string } }> };
 
+export type CreateMatchMutationVariables = Exact<{
+  data: MatchCreateInput;
+}>;
+
+
+export type CreateMatchMutation = { __typename?: 'Mutation', createMatch?: { __typename?: 'Match', id: string } | null };
+
+export type PublishMatchMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type PublishMatchMutation = { __typename?: 'Mutation', publishMatch?: { __typename?: 'Match', id: string } | null };
+
 
 export const CategoriesDocument = gql`
     query Categories {
@@ -5057,3 +5707,69 @@ export function useGetCollectionByIdLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type GetCollectionByIdQueryHookResult = ReturnType<typeof useGetCollectionByIdQuery>;
 export type GetCollectionByIdLazyQueryHookResult = ReturnType<typeof useGetCollectionByIdLazyQuery>;
 export type GetCollectionByIdQueryResult = Apollo.QueryResult<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>;
+export const CreateMatchDocument = gql`
+    mutation CreateMatch($data: MatchCreateInput!) {
+  createMatch(data: $data) {
+    id
+  }
+}
+    `;
+export type CreateMatchMutationFn = Apollo.MutationFunction<CreateMatchMutation, CreateMatchMutationVariables>;
+
+/**
+ * __useCreateMatchMutation__
+ *
+ * To run a mutation, you first call `useCreateMatchMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateMatchMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createMatchMutation, { data, loading, error }] = useCreateMatchMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useCreateMatchMutation(baseOptions?: Apollo.MutationHookOptions<CreateMatchMutation, CreateMatchMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateMatchMutation, CreateMatchMutationVariables>(CreateMatchDocument, options);
+      }
+export type CreateMatchMutationHookResult = ReturnType<typeof useCreateMatchMutation>;
+export type CreateMatchMutationResult = Apollo.MutationResult<CreateMatchMutation>;
+export type CreateMatchMutationOptions = Apollo.BaseMutationOptions<CreateMatchMutation, CreateMatchMutationVariables>;
+export const PublishMatchDocument = gql`
+    mutation PublishMatch($id: ID!) {
+  publishMatch(to: PUBLISHED, where: {id: $id}) {
+    id
+  }
+}
+    `;
+export type PublishMatchMutationFn = Apollo.MutationFunction<PublishMatchMutation, PublishMatchMutationVariables>;
+
+/**
+ * __usePublishMatchMutation__
+ *
+ * To run a mutation, you first call `usePublishMatchMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePublishMatchMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [publishMatchMutation, { data, loading, error }] = usePublishMatchMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function usePublishMatchMutation(baseOptions?: Apollo.MutationHookOptions<PublishMatchMutation, PublishMatchMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<PublishMatchMutation, PublishMatchMutationVariables>(PublishMatchDocument, options);
+      }
+export type PublishMatchMutationHookResult = ReturnType<typeof usePublishMatchMutation>;
+export type PublishMatchMutationResult = Apollo.MutationResult<PublishMatchMutation>;
+export type PublishMatchMutationOptions = Apollo.BaseMutationOptions<PublishMatchMutation, PublishMatchMutationVariables>;

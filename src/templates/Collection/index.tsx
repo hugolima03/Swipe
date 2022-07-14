@@ -1,7 +1,17 @@
+import { useMutation } from '@apollo/client'
 import Button from 'components/Button'
 import Header from 'components/Header'
-import { GetCollectionByIdQuery } from 'generated/graphql'
+import {
+  CreateMatchMutation,
+  GetCollectionByIdQuery,
+  PublishMatchMutation
+} from 'generated/graphql'
+import {
+  MUTATION_CREATE_MATCH,
+  MUTATION_PUBLISH_MATCH
+} from 'graphql/queries/match'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 import * as S from './styles'
@@ -11,7 +21,30 @@ export type CollectionProps = {
 }
 
 const Collection = ({ data }: CollectionProps) => {
+  const { push } = useRouter()
+
   const [collection] = useState(data.studyCollections[0])
+
+  const [createMatch, { loading: createMatchLoading }] =
+    useMutation<CreateMatchMutation>(MUTATION_CREATE_MATCH)
+
+  const [publishMatch, { loading: publishMatchLoading }] =
+    useMutation<PublishMatchMutation>(MUTATION_PUBLISH_MATCH)
+
+  async function useCreateMatch() {
+    await createMatch({
+      variables: {
+        data: { correctAnswers: 0, wrongAnswers: 0 }
+      }
+    }).then(async (e) => {
+      await publishMatch({
+        variables: {
+          id: e.data?.createMatch?.id
+        }
+      })
+      push(`/collection/${collection.id}/match/${e.data?.createMatch?.id}`)
+    })
+  }
 
   return (
     <S.Wrapper>
@@ -38,7 +71,13 @@ const Collection = ({ data }: CollectionProps) => {
           <p>cards</p>
         </S.FooterInfo>
 
-        <Button styleType="minimal">Start</Button>
+        <Button
+          styleType="minimal"
+          onClick={useCreateMatch}
+          loading={createMatchLoading || publishMatchLoading}
+        >
+          Start
+        </Button>
       </S.Footer>
     </S.Wrapper>
   )

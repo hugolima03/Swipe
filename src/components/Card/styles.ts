@@ -8,6 +8,12 @@ export const Wrapper = styled(motion.div)`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+
+  position: relative;
+
+  [aria-hidden='true'] {
+    opacity: 0;
+  }
 `
 
 export const Card = styled(motion.div)`
@@ -21,5 +27,8 @@ export const Card = styled(motion.div)`
     background-color: white;
 
     padding: ${theme.spacings.small};
+
+    position: absolute;
+    transform: translate(-50%, -50%);
   `}
 `

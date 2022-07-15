@@ -22,6 +22,7 @@ export const Card = styled(motion.div)`
     height: 70vh;
     border-radius: ${theme.border.radius};
     box-shadow: ${theme.shadows.default};
+    overflow: auto;
 
     background-color: white;
 

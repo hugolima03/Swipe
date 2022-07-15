@@ -708,7 +708,7 @@ export type BatchPayload = {
 
 export type Card = Node & {
   __typename?: 'Card';
-  answer: Scalars['String'];
+  answer: RichText;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -791,7 +791,7 @@ export type CardConnection = {
 };
 
 export type CardCreateInput = {
-  answer: Scalars['String'];
+  answer: Scalars['RichTextAST'];
   cl55r02uy3n4901uj7nh8g4lw?: InputMaybe<StudyCollectionCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   question: Scalars['String'];
@@ -831,25 +831,6 @@ export type CardManyWhereInput = {
   OR?: InputMaybe<Array<CardWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  answer?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  answer_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  answer_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  answer_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  answer_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  answer_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  answer_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  answer_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  answer_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  answer_starts_with?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -942,8 +923,6 @@ export type CardManyWhereInput = {
 };
 
 export enum CardOrderByInput {
-  AnswerAsc = 'answer_ASC',
-  AnswerDesc = 'answer_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   IdAsc = 'id_ASC',
@@ -957,7 +936,7 @@ export enum CardOrderByInput {
 }
 
 export type CardUpdateInput = {
-  answer?: InputMaybe<Scalars['String']>;
+  answer?: InputMaybe<Scalars['RichTextAST']>;
   cl55r02uy3n4901uj7nh8g4lw?: InputMaybe<StudyCollectionUpdateManyInlineInput>;
   question?: InputMaybe<Scalars['String']>;
 };
@@ -980,7 +959,7 @@ export type CardUpdateManyInlineInput = {
 };
 
 export type CardUpdateManyInput = {
-  answer?: InputMaybe<Scalars['String']>;
+  answer?: InputMaybe<Scalars['RichTextAST']>;
   question?: InputMaybe<Scalars['String']>;
 };
 
@@ -1037,25 +1016,6 @@ export type CardWhereInput = {
   OR?: InputMaybe<Array<CardWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
-  answer?: InputMaybe<Scalars['String']>;
-  /** All values containing the given string. */
-  answer_contains?: InputMaybe<Scalars['String']>;
-  /** All values ending with the given string. */
-  answer_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are contained in given list. */
-  answer_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values that are not equal to given value. */
-  answer_not?: InputMaybe<Scalars['String']>;
-  /** All values not containing the given string. */
-  answer_not_contains?: InputMaybe<Scalars['String']>;
-  /** All values not ending with the given string */
-  answer_not_ends_with?: InputMaybe<Scalars['String']>;
-  /** All values that are not contained in given list. */
-  answer_not_in?: InputMaybe<Array<Scalars['String']>>;
-  /** All values not starting with the given string. */
-  answer_not_starts_with?: InputMaybe<Scalars['String']>;
-  /** All values starting with the given string. */
-  answer_starts_with?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -5499,7 +5459,7 @@ export type GetCollectionByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetCollectionByIdQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', name: string, id: string, description?: string | null, image: { __typename?: 'Asset', url: string, fileName: string }, cards: Array<{ __typename?: 'Card', id: string, answer: string, question: string }> }> };
+export type GetCollectionByIdQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', name: string, id: string, description?: string | null, image: { __typename?: 'Asset', url: string, fileName: string }, cards: Array<{ __typename?: 'Card', id: string, question: string, answer: { __typename?: 'RichText', html: string } }> }> };
 
 export type CreateMatchMutationVariables = Exact<{
   data: MatchCreateInput;
@@ -5678,7 +5638,9 @@ export const GetCollectionByIdDocument = gql`
     }
     cards {
       id
-      answer
+      answer {
+        html
+      }
       question
     }
   }

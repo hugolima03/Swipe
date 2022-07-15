@@ -20,7 +20,9 @@ export const QUERY_GET_COLLECTION_BY_ID = gql`
       }
       cards {
         id
-        answer
+        answer {
+          html
+        }
         question
       }
     }

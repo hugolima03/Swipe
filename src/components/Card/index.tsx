@@ -6,7 +6,11 @@ import * as S from './styles'
 export type CardProps = {
   __typename?: 'Card' | undefined
   id: string
-  answer: string
+  answer: {
+    __typename?: 'RichText' | undefined
+    html: string
+  }
+
   question: string
   onSwipe: (result: boolean) => void
 }
@@ -124,9 +128,8 @@ const Card = ({ answer, question, onSwipe }: CardProps) => {
         onDragEnd={handleOnDragEnd}
         dragElastic={{ bottom: 0.3, top: 0.3, left: 0.6, right: 0.6 }}
         style={{ x, rotateY: 180, zIndex: 0 }}
-      >
-        <h1>{answer}</h1>
-      </S.Card>
+        dangerouslySetInnerHTML={{ __html: answer.html }}
+      />
     </S.Wrapper>
   )
 }

@@ -3,14 +3,28 @@ import { useState } from 'react'
 import theme from 'styles/theme'
 import * as S from './styles'
 
-const Card = () => {
+export type CardProps = {
+  __typename?: 'Card' | undefined
+  id: string
+  answer: string
+  question: string
+  onSwipe: (result: boolean) => void
+}
+
+const Card = ({ answer, question, onSwipe }: CardProps) => {
   const x = useMotionValue(0)
   const [front, setFront] = useState(true)
 
   const background = useTransform(
     x,
-    [-50, 0, 50],
-    [theme.colors.pink, '#fff', theme.colors.green]
+    [-300, -50, 0, 50, 300],
+    [
+      theme.colors.white,
+      theme.colors.pink,
+      theme.colors.white,
+      theme.colors.green,
+      theme.colors.white
+    ]
   )
 
   function handleOnDragEnd() {
@@ -23,6 +37,8 @@ const Card = () => {
         x: 300,
         opacity: 0
       })
+
+      onSwipe(true)
       return
     }
     if (x.get() < -80) {
@@ -34,6 +50,8 @@ const Card = () => {
         x: -300,
         opacity: 0
       })
+
+      onSwipe(false)
       return
     }
   }
@@ -68,7 +86,10 @@ const Card = () => {
   const backAnimation = useAnimation()
 
   return (
-    <S.Wrapper style={{ background }}>
+    <S.Wrapper
+      style={{ background, opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+    >
       <S.Card
         aria-hidden={!front}
         drag
@@ -85,7 +106,7 @@ const Card = () => {
         dragElastic={{ bottom: 0.3, top: 0.3, left: 0.6, right: 0.6 }}
         style={{ x, zIndex: 1 }}
       >
-        <h1>Frente</h1>
+        <h1>{question}</h1>
       </S.Card>
 
       <S.Card
@@ -104,7 +125,7 @@ const Card = () => {
         dragElastic={{ bottom: 0.3, top: 0.3, left: 0.6, right: 0.6 }}
         style={{ x, rotateY: 180, zIndex: 0 }}
       >
-        <h1>Costa</h1>
+        <h1>{answer}</h1>
       </S.Card>
     </S.Wrapper>
   )

@@ -20,7 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   })
 
   const paths = data.studyCollections.map(({ id }) => ({
-    params: { id }
+    params: { collectionid: id }
   }))
 
   return { paths, fallback: false }
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await client.query<GetCollectionByIdQuery>({
     query: QUERY_GET_COLLECTION_BY_ID,
     variables: {
-      id: params?.id
+      id: params?.collectionid
     }
   })
 

@@ -50,12 +50,14 @@ const buttonModifiers = {
     background-color: white;
     color: ${theme.colors.primary};
     border: 1px solid white;
+    width: min-content;
     min-width: auto;
     padding: 0.8rem;
     box-shadow: none;
     border: none;
 
     svg {
+      height: 2.4rem;
       fill: ${theme.colors.black};
     }
 

@@ -18,6 +18,11 @@ export const QUERY_GET_COLLECTION_BY_ID = gql`
         url
         fileName
       }
+      cards {
+        id
+        answer
+        question
+      }
     }
   }
 `

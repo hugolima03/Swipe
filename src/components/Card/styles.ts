@@ -19,7 +19,7 @@ export const Wrapper = styled(motion.div)`
 export const Card = styled(motion.div)`
   ${({ theme }) => css`
     width: 90vw;
-    height: 80vh;
+    height: 70vh;
     border-radius: ${theme.border.radius};
     box-shadow: ${theme.shadows.default};
 

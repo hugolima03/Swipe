@@ -5499,7 +5499,7 @@ export type GetCollectionByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetCollectionByIdQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', name: string, id: string, description?: string | null, image: { __typename?: 'Asset', url: string, fileName: string } }> };
+export type GetCollectionByIdQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', name: string, id: string, description?: string | null, image: { __typename?: 'Asset', url: string, fileName: string }, cards: Array<{ __typename?: 'Card', id: string, answer: string, question: string }> }> };
 
 export type CreateMatchMutationVariables = Exact<{
   data: MatchCreateInput;
@@ -5675,6 +5675,11 @@ export const GetCollectionByIdDocument = gql`
     image {
       url
       fileName
+    }
+    cards {
+      id
+      answer
+      question
     }
   }
 }

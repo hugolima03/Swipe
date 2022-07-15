@@ -1,5 +1,6 @@
 import { Button } from 'components/Button/styles'
 import Card from 'components/Card'
+import Congrats from 'components/Congrats'
 import { useMotionValue } from 'framer-motion'
 import { GetCollectionByIdQuery } from 'generated/graphql'
 import { useRouter } from 'next/router'
@@ -38,6 +39,8 @@ const Match = ({ studyCollections }: MatchProps) => {
         if (index === activeCard) return <Card {...card} onSwipe={onSwipe} />
         return null
       })}
+
+      {activeCard === cards.length && <Congrats />}
     </S.Wrapper>
   )
 }

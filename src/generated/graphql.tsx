@@ -5461,6 +5461,11 @@ export type GetCollectionByIdQueryVariables = Exact<{
 
 export type GetCollectionByIdQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', name: string, id: string, description?: string | null, image: { __typename?: 'Asset', url: string, fileName: string }, cards: Array<{ __typename?: 'Card', id: string, question: string, answer: { __typename?: 'RichText', html: string } }> }> };
 
+export type GetAllStudyCollectionsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllStudyCollectionsQuery = { __typename?: 'Query', studyCollections: Array<{ __typename?: 'StudyCollection', id: string, name: string }> };
+
 export type CreateMatchMutationVariables = Exact<{
   data: MatchCreateInput;
 }>;
@@ -5674,6 +5679,41 @@ export function useGetCollectionByIdLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type GetCollectionByIdQueryHookResult = ReturnType<typeof useGetCollectionByIdQuery>;
 export type GetCollectionByIdLazyQueryHookResult = ReturnType<typeof useGetCollectionByIdLazyQuery>;
 export type GetCollectionByIdQueryResult = Apollo.QueryResult<GetCollectionByIdQuery, GetCollectionByIdQueryVariables>;
+export const GetAllStudyCollectionsDocument = gql`
+    query GetAllStudyCollections {
+  studyCollections {
+    id
+    name
+  }
+}
+    `;
+
+/**
+ * __useGetAllStudyCollectionsQuery__
+ *
+ * To run a query within a React component, call `useGetAllStudyCollectionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllStudyCollectionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllStudyCollectionsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllStudyCollectionsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllStudyCollectionsQuery, GetAllStudyCollectionsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllStudyCollectionsQuery, GetAllStudyCollectionsQueryVariables>(GetAllStudyCollectionsDocument, options);
+      }
+export function useGetAllStudyCollectionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllStudyCollectionsQuery, GetAllStudyCollectionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllStudyCollectionsQuery, GetAllStudyCollectionsQueryVariables>(GetAllStudyCollectionsDocument, options);
+        }
+export type GetAllStudyCollectionsQueryHookResult = ReturnType<typeof useGetAllStudyCollectionsQuery>;
+export type GetAllStudyCollectionsLazyQueryHookResult = ReturnType<typeof useGetAllStudyCollectionsLazyQuery>;
+export type GetAllStudyCollectionsQueryResult = Apollo.QueryResult<GetAllStudyCollectionsQuery, GetAllStudyCollectionsQueryVariables>;
 export const CreateMatchDocument = gql`
     mutation CreateMatch($data: MatchCreateInput!) {
   createMatch(data: $data) {

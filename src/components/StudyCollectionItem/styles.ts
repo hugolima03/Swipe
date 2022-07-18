@@ -52,7 +52,7 @@ export const Wrapper = styled.a`
     }
 
     & + & {
-      border-top: 1px solid ${theme.colors.lightGray};
+      border-top: 1px solid rgb(241 245 249);
     }
 
     &:visited {

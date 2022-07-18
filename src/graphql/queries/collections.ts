@@ -28,3 +28,12 @@ export const QUERY_GET_COLLECTION_BY_ID = gql`
     }
   }
 `
+
+export const QUERY_GET_ALL_COLLECTIONS = gql`
+  query GetAllStudyCollections {
+    studyCollections {
+      id
+      name
+    }
+  }
+`

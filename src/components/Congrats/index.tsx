@@ -9,10 +9,6 @@ const Congrats = () => {
   useEffect(() => {
     const jsConfetti = new JSConfetti()
 
-    jsConfetti.addConfetti({
-      emojis: ['📚', '📘']
-    })
-
     jsConfetti.addConfetti()
   }, [])
 

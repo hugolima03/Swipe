@@ -1,22 +1,37 @@
+import CategorySlider from 'components/CategorySlider'
 import StudyCollectionItem from 'components/StudyCollectionItem'
-import { GetAllStudyCollectionsQuery } from 'generated/graphql'
+import { Category, QueryHomeQuery } from 'generated/graphql'
+import { useState } from 'react'
 import Base from 'templates/Base'
 import * as S from './styles'
 
-export type ExploreProps = GetAllStudyCollectionsQuery
+export type ExploreProps = QueryHomeQuery
 
-const Explore = ({ studyCollections }: ExploreProps) => (
-  <Base>
-    <S.Wrapper>
-      <S.Title>Explore</S.Title>
+export type CategoriesList = Pick<Category, 'name' | 'image' | 'id' | 'slug'>[]
 
-      <S.Subtitle>All sets</S.Subtitle>
+const Explore = ({ studyCollections, categories }: ExploreProps) => {
+  const [categoriesList] = useState<CategoriesList>(
+    categories as CategoriesList
+  )
 
-      {studyCollections.map(({ id, name }) => (
-        <StudyCollectionItem key={id} id={id} name={name} />
-      ))}
-    </S.Wrapper>
-  </Base>
-)
+  return (
+    <Base>
+      <S.Wrapper>
+        <S.Title>Explore</S.Title>
+
+        {/* <S.SearchWrapper>
+        <TextField placeholder="Search by subject, name or user..." />
+      </S.SearchWrapper> */}
+        <CategorySlider categories={categoriesList} />
+
+        <S.Subtitle>All sets</S.Subtitle>
+
+        {studyCollections.map(({ id, name }) => (
+          <StudyCollectionItem key={id} id={id} name={name} />
+        ))}
+      </S.Wrapper>
+    </Base>
+  )
+}
 
 export default Explore

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  max-width: 28.8rem;
+  width: 100%;
 `
 
 export const Label = styled.label`

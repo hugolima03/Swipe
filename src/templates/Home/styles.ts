@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components'
 
-export const Wrapper = styled.main``
-
 export const NoStudies = styled.div`
   ${({ theme }) => css`
     display: flex;

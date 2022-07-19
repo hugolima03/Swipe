@@ -15,7 +15,8 @@ export const Wrapper = styled.nav`
 
     border-radius: 1.6rem 1.6rem 0 0;
 
-    position: relative;
+    position: sticky;
+    bottom: 0;
   `}
 `
 

@@ -8,6 +8,7 @@ export const Wrapper = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: ${theme.layers.header};
 
     position: sticky;
     top: 0;

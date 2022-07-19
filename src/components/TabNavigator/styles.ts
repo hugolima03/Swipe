@@ -5,7 +5,7 @@ export const Wrapper = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-around;
-
+    padding: 0.8rem 0;
     height: 6rem;
 
     gap: 7rem;

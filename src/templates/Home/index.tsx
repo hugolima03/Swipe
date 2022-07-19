@@ -12,7 +12,7 @@ export type HomeProps = {
 
 export default function Home({ categories }: HomeProps) {
   return (
-    <Base wrapperStyle={{ height: '100vh' }}>
+    <Base>
       <CategorySlider categories={categories} />
       <S.NoStudies>
         <p>Looks like you don't have study groups</p>

@@ -18,5 +18,9 @@ export const Wrapper = styled.header`
     svg {
       height: 2.4rem;
     }
+
+    a {
+      height: 2.4rem;
+    }
   `}
 `

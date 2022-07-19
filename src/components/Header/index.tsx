@@ -1,6 +1,7 @@
 import Button from 'components/Button'
 import Logo from 'components/Logo'
 import Menu from 'components/Menu'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import {
@@ -37,7 +38,13 @@ const Header = ({
             <MenuIcon aria-label="open-menu" />
           </Button>
         )}
-        <Logo />
+
+        <Link href="/" passHref>
+          <a>
+            <Logo />
+          </a>
+        </Link>
+
         <Button styleType="icon" style={{ gridArea: 'right' }}>
           <Notifications />
         </Button>

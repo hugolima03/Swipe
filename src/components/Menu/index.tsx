@@ -44,23 +44,23 @@ const Menu = ({ onClose, setOpen }: MenuProps) => {
       </Button>
 
       <S.LinksWrapper>
-        <Link href="" passHref>
-          <S.MenuLink href="/" active={pathname === links.home.pathname}>
+        <Link href={links.home.pathname} passHref>
+          <S.MenuLink active={pathname === links.home.pathname}>
             {links.home.label}
           </S.MenuLink>
         </Link>
-        <Link href="" passHref>
-          <S.MenuLink href="/" active={pathname === links.explore.pathname}>
+        <Link href={links.explore.pathname} passHref>
+          <S.MenuLink active={pathname === links.explore.pathname}>
             {links.explore.label}
           </S.MenuLink>
         </Link>
-        <Link href="" passHref>
-          <S.MenuLink href="/" active={pathname === links.profile.pathname}>
+        <Link href={links.settings.pathname} passHref>
+          <S.MenuLink active={pathname === links.settings.pathname}>
             {links.settings.label}
           </S.MenuLink>
         </Link>
-        <Link href="" passHref>
-          <S.MenuLink href="/" active={pathname === links.settings.pathname}>
+        <Link href={links.profile.pathname} passHref>
+          <S.MenuLink active={pathname === links.settings.pathname}>
             {links.profile.label}
           </S.MenuLink>
         </Link>

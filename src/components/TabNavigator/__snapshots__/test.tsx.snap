@@ -20,12 +20,15 @@ exports[`<TabNavigator /> should render the links corretcly 1`] = `
   -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
   justify-content: space-around;
+  padding: 0.8rem 0;
   height: 6rem;
   gap: 7rem;
   background-color: #FFF;
   box-shadow: rgba(25,1,52,0.16) 0px 4px 10px;
   border-radius: 1.6rem 1.6rem 0 0;
-  position: relative;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
 }
 
 .c1 {
@@ -176,4 +179,4 @@ exports[`<TabNavigator /> should render the links corretcly 1`] = `
     Profile
   </a>
 </nav>
-`;
+`

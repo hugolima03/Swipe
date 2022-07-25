@@ -8,6 +8,12 @@ type CustomRenderProps = Omit<RenderOptions, 'queries'>
 
 const mocks: MockedResponse<Record<string, unknown>>[] = []
 
+const useRouter = jest.spyOn(require('next/router'), 'useRouter')
+
+useRouter.mockImplementation(() => ({
+  back: jest.fn()
+}))
+
 const customRender = (
   ui: React.ReactElement,
   { ...renderOptions }: CustomRenderProps = {}
